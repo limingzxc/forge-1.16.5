@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "boson:block/firestone_block" }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "item.boson.obsidian_ingot": "obsidian_ingot",
+  "block.boson.obsidian_block": "obsidian_block",
+  "itemGroup.obsidian_group": "obsidian_group",
+  "item.boson.obsidian_apple": "obsidian_apple",
+  "item.boson.obsidian_sword": "obsidian_sword",
+  "item.boson.obsidian_pickaxe": "obsidian_pickaxe",
+  "item.boson.obsidian_helmet": "obsidian_helmet",
+  "item.boson.obsidian_chestplate": "obsidian_chestplate",
+  "item.boson.obsidian_leggings": "obsidian_leggings",
+  "item.boson.obsidian_boots": "obsidian_boots",
+  "item.boson.cloud_fruit": "cloud_fruit",
+  "item.boson.item_infinite_snowball": "item_infinite_snowball",
+  "tooltip.boson.firestone": "Hold \u00A7eSHIFT\u00A7r for moreInformation",
+  "tooltip.boson.firestone_shift": "Might set you one fire. But also might protect from it!",
+  "tooltip.boson.cloud_fruit": "Hold \u00A7eSHIFT\u00A7r for moreInformation",
+  "tooltip.boson.cloud_fruit_shift": ""
+}

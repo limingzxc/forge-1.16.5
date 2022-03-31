@@ -1,0 +1,18 @@
+{
+  "item.boson.obsidian_ingot": "黑曜石锭",
+  "block.boson.obsidian_block": "黑曜石方块",
+  "itemGroup.obsidian_group": "黑曜石物品栏",
+  "item.boson.obsidian_apple": "黑曜石苹果",
+  "item.boson.obsidian_sword": "黑曜石剑",
+  "item.boson.obsidian_pickaxe": "黑曜石稿",
+  "item.boson.obsidian_helmet": "黑曜石头盔",
+  "item.boson.obsidian_chestplate": "黑曜石胸甲",
+  "item.boson.obsidian_leggings": "黑曜石裤子",
+  "item.boson.obsidian_boots": "黑曜石鞋子",
+  "item.boson.cloud_fruit": "云之果",
+  "item.boson.item_infinite_snowball": "无限雪球",
+  "tooltip.boson.firestone": "按住\u00A7eSHIFT\u00A7r以查看更多信息",
+  "tooltip.boson.firestone_shift": "可能会点燃你，但也可能会保护你不受火焰伤害！",
+  "tooltip.boson.cloud_fruit": "按住§eSHIFT§r以查看更多信息",
+  "tooltip.boson.cloud_fruit_shift": "吸收了云气的果子，吃了它可以获得飘浮的能力，但不要吃的太多哦"
+}
