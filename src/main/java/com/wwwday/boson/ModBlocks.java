@@ -5,8 +5,8 @@ import com.wwwday.boson.block.FirestoneBlock;
 import com.wwwday.boson.block.ObsidianBlock;
 //import com.wwwday.boson.crop.SoybeanBlock;
 import com.wwwday.boson.group.ModGroup;
-//import com.wwwday.boson.notsoildblock.ObsidianFrame;
-//import com.wwwday.boson.notsoildblock.ObsidianSlab;
+import com.wwwday.boson.notsoildblock.ObsidianFrame;
+import com.wwwday.boson.notsoildblock.ObsidianSlab;
 //import com.wwwday.boson.trees.PoplarTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -23,9 +23,9 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Boson.MOD_ID);
 
-//    public static final RegistryObject<Block> OBSIDIAN_FRAME = BLOCKS.register("obsidian_frame",
-//            ObsidianFrame::new);
-//
+    public static final RegistryObject<Block> OBSIDIAN_FRAME = BLOCKS.register("obsidian_frame",
+            ObsidianFrame::new);
+
     public static final RegistryObject<Block> OBSIDIAN_BLOCK = BLOCKS.register("obsidian_block",
             ObsidianBlock::new);
 
@@ -38,8 +38,8 @@ public class ModBlocks {
             () -> new FirestoneBlock(AbstractBlock.Properties.of(Material.STONE)
                     .harvestLevel(2).requiresCorrectToolForDrops().harvestTool(ToolType.PICKAXE).strength(6f)));
 
-//    public static final RegistryObject<Block> OBSIDIAN_SLAB = BLOCKS.register("obsidian_slab",
-//            ObsidianSlab::new);
+    public static final RegistryObject<Block> OBSIDIAN_SLAB = BLOCKS.register("obsidian_slab",
+            ObsidianSlab::new);
 //
 //    public static final RegistryObject<Block> POPLAR_LOG = BLOCKS.register("poplar_log",
 //            () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_LOG)));

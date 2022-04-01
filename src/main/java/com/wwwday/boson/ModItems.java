@@ -8,8 +8,8 @@ import com.wwwday.boson.group.ModGroup;
 import com.wwwday.boson.item.Firestone;
 import com.wwwday.boson.item.ObsidianIngot;
 import com.wwwday.boson.melee_weapons.ObsidianSword;
-//import com.wwwday.boson.missile.ItemInfiniteSnowball;
-//import com.wwwday.boson.tool.ObsidianPickaxe;
+import com.wwwday.boson.missile.ItemInfiniteSnowball;
+import com.wwwday.boson.tool.ObsidianPickaxe;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
@@ -23,13 +23,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Boson.MOD_ID);
 
-//    public static final RegistryObject<Item> OBSIDIAN_PICKAXE = ITEMS.register("obsidian_pickaxe", ObsidianPickaxe::new);
-//
-//    public static RegistryObject<Item> OBSIDIAN_FRAME = ITEMS.register("obsidian_frame",
-//            () -> new BlockItem(ModBlocks.OBSIDIAN_FRAME.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> ITEM_INFINITE_SNOWBALL = ITEMS.register("item_infinite_snowball", ItemInfiniteSnowball::new);
-//
+    public static final RegistryObject<Item> OBSIDIAN_PICKAXE = ITEMS.register("obsidian_pickaxe", ObsidianPickaxe::new);
+
+    public static RegistryObject<Item> OBSIDIAN_FRAME = ITEMS.register("obsidian_frame",
+            () -> new BlockItem(ModBlocks.OBSIDIAN_FRAME.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> ITEM_INFINITE_SNOWBALL = ITEMS.register("item_infinite_snowball", ItemInfiniteSnowball::new);
+
     public static RegistryObject<Item> OBSIDIAN_SWORD = ITEMS.register("obsidian_sword", ObsidianSword::new);
 
     public static final RegistryObject<Item> OBSIDIAN_INGOT = ITEMS.register("obsidian_ingot", ObsidianIngot::new);
@@ -62,9 +62,9 @@ public class ModItems {
 
 //    public static final RegistryObject<Item> SOYBEAN = ITEMS.register("soybean", Soybean::new);
 //
-//    public static final RegistryObject<Item> OBSIDIAN_SLAB = ITEMS.register("obsidian_slab",
-//            () -> new BlockItem(ModBlocks.OBSIDIAN_SLAB.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
+    public static final RegistryObject<Item> OBSIDIAN_SLAB = ITEMS.register("obsidian_slab",
+            () -> new BlockItem(ModBlocks.OBSIDIAN_SLAB.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
 //    public static final RegistryObject<Item> POPLAR_LOG = ITEMS.register("poplar_log",
 //            () -> new BlockItem(ModBlocks.POPLAR_LOG.get(), new Item.Properties().group(ModGroup.itemGroup)));
 //
