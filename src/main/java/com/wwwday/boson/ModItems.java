@@ -1,7 +1,6 @@
 package com.wwwday.boson;
 
 import com.wwwday.boson.armor.ModArmorMaterial;
-//import com.wwwday.boson.crop.Soybean;
 import com.wwwday.boson.food.CloudFruit;
 import com.wwwday.boson.food.ObsidianApple;
 import com.wwwday.boson.group.ModGroup;
@@ -13,7 +12,10 @@ import com.wwwday.boson.tool.ObsidianPickaxe;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -60,31 +62,36 @@ public class ModItems {
     public static final RegistryObject<Item> FIRESTONE_BLOCK = ITEMS.register("firestone_block",
             () -> new BlockItem(ModBlocks.FIRESTONE_BLOCK.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
-//    public static final RegistryObject<Item> SOYBEAN = ITEMS.register("soybean", Soybean::new);
-//
+    public static final RegistryObject<Item> SOYBEAN = ITEMS.register("soybean",
+            () -> new BlockItem(ModBlocks.SOYBEAN_BLOCK.get(), new Item.Properties().food(new Food.Builder()
+                    .saturationMod(10)
+                    .nutrition(20)
+                    .effect(() -> new EffectInstance(Effects.DAMAGE_RESISTANCE, 10 * 20, 0), 1)
+                    .build()).tab(ModGroup.itemGroup)));
+
     public static final RegistryObject<Item> OBSIDIAN_SLAB = ITEMS.register("obsidian_slab",
             () -> new BlockItem(ModBlocks.OBSIDIAN_SLAB.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
-//    public static final RegistryObject<Item> POPLAR_LOG = ITEMS.register("poplar_log",
-//            () -> new BlockItem(ModBlocks.POPLAR_LOG.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> POPLAR_WOOD = ITEMS.register("poplar_wood",
-//            () -> new BlockItem(ModBlocks.POPLAR_WOOD.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> STRIPPED_POPLAR_LOG = ITEMS.register("stripped_poplar_log",
-//            () -> new BlockItem(ModBlocks.STRIPPED_POPLAR_LOG.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> STRIPPED_POPLAR_WOOD = ITEMS.register("stripped_poplar_wood",
-//            () -> new BlockItem(ModBlocks.STRIPPED_POPLAR_WOOD.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> POPLAR_PLANKS = ITEMS.register("poplar_planks",
-//            () -> new BlockItem(ModBlocks.POPLAR_PLANKS.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> POPLAR_LEAVES = ITEMS.register("poplar_leaves",
-//            () -> new BlockItem(ModBlocks.POPLAR_LEAVES.get(), new Item.Properties().group(ModGroup.itemGroup)));
-//
-//    public static final RegistryObject<Item> POPLAR_SAPLING = ITEMS.register("poplar_sapling",
-//            () -> new BlockItem(ModBlocks.POPLAR_SAPLING.get(), new Item.Properties().group(ModGroup.itemGroup)));
+    public static final RegistryObject<Item> POPLAR_LOG = ITEMS.register("poplar_log",
+            () -> new BlockItem(ModBlocks.POPLAR_LOG.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> POPLAR_WOOD = ITEMS.register("poplar_wood",
+            () -> new BlockItem(ModBlocks.POPLAR_WOOD.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> STRIPPED_POPLAR_LOG = ITEMS.register("stripped_poplar_log",
+            () -> new BlockItem(ModBlocks.STRIPPED_POPLAR_LOG.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> STRIPPED_POPLAR_WOOD = ITEMS.register("stripped_poplar_wood",
+            () -> new BlockItem(ModBlocks.STRIPPED_POPLAR_WOOD.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> POPLAR_PLANKS = ITEMS.register("poplar_planks",
+            () -> new BlockItem(ModBlocks.POPLAR_PLANKS.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> POPLAR_LEAVES = ITEMS.register("poplar_leaves",
+            () -> new BlockItem(ModBlocks.POPLAR_LEAVES.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> POPLAR_SAPLING = ITEMS.register("poplar_sapling",
+            () -> new BlockItem(ModBlocks.POPLAR_SAPLING.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
     public void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

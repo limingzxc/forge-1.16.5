@@ -44,7 +44,7 @@ public class CloudFruit extends Item {
     public ItemStack finishUsingItem(ItemStack stack, World world, LivingEntity entity) {
         if(this.isEdible()) {
             if(entity.getEffect(Effects.LEVITATION) != null) {
-                entity.addEffect(new EffectInstance(Effects.HARM, 1, 1));
+                entity.addEffect(new EffectInstance(Effects.HARM, 1, 0));
             }
             return entity.eat(world, stack);
         }

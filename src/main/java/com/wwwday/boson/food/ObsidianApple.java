@@ -10,7 +10,7 @@ public class ObsidianApple extends Item {
     private static final Food food = (new Food.Builder())
             .saturationMod(10)
             .nutrition(20)
-            .effect(() -> new EffectInstance(Effects.POISON, 3 * 20, 1), 1)
+            .effect(() -> new EffectInstance(Effects.POISON, 3 * 20, 0), 1)
             .build();
 
     public ObsidianApple() {
