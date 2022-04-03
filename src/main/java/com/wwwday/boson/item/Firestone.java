@@ -99,4 +99,19 @@ public class Firestone extends Item {
             world.setBlock(blockpos, blockState, 11);
         }
     }
+
+    @Override
+    public ItemStack getContainerItem(ItemStack itemStack) {
+        ItemStack container = itemStack.copy();
+        if(container.hurt(1, random, null)) {
+            return ItemStack.EMPTY;
+        } else {
+            return container;
+        }
+    }
+
+    @Override
+    public boolean hasContainerItem(ItemStack stack) {
+        return true;
+    }
 }
