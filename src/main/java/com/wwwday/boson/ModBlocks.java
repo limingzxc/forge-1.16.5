@@ -63,7 +63,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> POPLAR_SAPLING = BLOCKS.register("poplar_sapling",
             () -> new SaplingBlock(new PoplarTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
 
-    public void register(IEventBus eventBus) {
+    public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }
 

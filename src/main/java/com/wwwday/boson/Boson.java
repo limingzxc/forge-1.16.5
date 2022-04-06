@@ -1,6 +1,7 @@
 package com.wwwday.boson;
 
 import com.google.common.collect.ImmutableMap;
+import com.wwwday.boson.tileentity.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -21,8 +22,9 @@ public class Boson {
 
     public Boson() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModItems.ITEMS.register(eventBus);
-        ModBlocks.BLOCKS.register(eventBus);
+        ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
+        ModTileEntities.register(eventBus);
 
         eventBus.addListener(this::doClientStuff);
 

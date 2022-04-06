@@ -93,7 +93,7 @@ public class ModItems {
     public static final RegistryObject<Item> POPLAR_SAPLING = ITEMS.register("poplar_sapling",
             () -> new BlockItem(ModBlocks.POPLAR_SAPLING.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
-    public void register(IEventBus eventBus) {
+    public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
 }
