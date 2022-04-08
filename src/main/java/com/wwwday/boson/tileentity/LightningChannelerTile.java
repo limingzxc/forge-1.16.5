@@ -30,6 +30,10 @@ public class LightningChannelerTile extends TileEntity {
         this(ModTileEntities.LIGHTNING_CHANNELER_TILE.get());
     }
 
+    public LightningChannelerTile() {
+        this(ModTileEntities.LIGHTNING_CHANNELER_TILE.get());
+    }
+
     @Override
     public void load(BlockState state, CompoundNBT nbt) {
         itemHandler.deserializeNBT(nbt.getCompound("inv"));
