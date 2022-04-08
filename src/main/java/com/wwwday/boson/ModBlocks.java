@@ -2,16 +2,19 @@ package com.wwwday.boson;
 
 import com.wwwday.boson.block.CubeBlock;
 import com.wwwday.boson.block.FirestoneBlock;
+import com.wwwday.boson.block.LightningChannelerBlock;
 import com.wwwday.boson.block.ObsidianBlock;
 import com.wwwday.boson.crop.SoybeanBlock;
 import com.wwwday.boson.group.ModGroup;
 import com.wwwday.boson.notsoildblock.ObsidianFrame;
 import com.wwwday.boson.notsoildblock.ObsidianSlab;
 import com.wwwday.boson.trees.PoplarTree;
+import com.wwwday.boson.world.gen.OreType;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -62,6 +65,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> POPLAR_SAPLING = BLOCKS.register("poplar_sapling",
             () -> new SaplingBlock(new PoplarTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> LIGHTNING_CHANNELER = BLOCKS.register("lightning_channeler",
+            () -> new LightningChannelerBlock(AbstractBlock.Properties.of(Material.METAL)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

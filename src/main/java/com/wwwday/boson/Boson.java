@@ -1,8 +1,11 @@
 package com.wwwday.boson;
 
 import com.google.common.collect.ImmutableMap;
+import com.wwwday.boson.container.ModContainers;
+import com.wwwday.boson.screen.LightningChannelerScreen;
 import com.wwwday.boson.tileentity.ModTileEntities;
 import net.minecraft.block.Block;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.AxeItem;
@@ -25,6 +28,7 @@ public class Boson {
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
         ModTileEntities.register(eventBus);
+        ModContainers.register(eventBus);
 
         eventBus.addListener(this::doClientStuff);
 
@@ -46,6 +50,8 @@ public class Boson {
             RenderTypeLookup.setRenderLayer(ModBlocks.SOYBEAN_BLOCK.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.POPLAR_LEAVES.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.POPLAR_SAPLING.get(), RenderType.cutout());
+            ScreenManager.register(ModContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
+                    LightningChannelerScreen::new);
         });
     }
 }
