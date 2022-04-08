@@ -93,6 +93,9 @@ public class ModItems {
     public static final RegistryObject<Item> POPLAR_SAPLING = ITEMS.register("poplar_sapling",
             () -> new BlockItem(ModBlocks.POPLAR_SAPLING.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
+    public static final RegistryObject<Item> LIGHTNING_CHANNELER = ITEMS.register("lightning_channeler",
+            () -> new BlockItem(ModBlocks.LIGHTNING_CHANNELER.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

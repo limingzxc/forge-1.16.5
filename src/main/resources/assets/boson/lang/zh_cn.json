@@ -15,5 +15,6 @@
   "tooltip.boson.firestone": "按住\u00A7eSHIFT\u00A7r以查看更多信息",
   "tooltip.boson.firestone_shift": "可能会点燃你，但也可能会保护你不受火焰伤害！",
   "tooltip.boson.cloud_fruit": "按住§eSHIFT§r以查看更多信息",
-  "tooltip.boson.cloud_fruit_shift": "吸收了云气的果子，吃了它可以获得飘浮的能力，但不要吃的太多哦"
+  "tooltip.boson.cloud_fruit_shift": "吸收了云气的果子，吃了它可以获得飘浮的能力，但不要吃的太多哦",
+  "screen.boson.lightning_channeler": "电盒"
 }
