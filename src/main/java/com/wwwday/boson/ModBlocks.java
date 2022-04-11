@@ -8,6 +8,7 @@ import com.wwwday.boson.crop.SoybeanBlock;
 import com.wwwday.boson.group.ModGroup;
 import com.wwwday.boson.notsoildblock.ObsidianFrame;
 import com.wwwday.boson.notsoildblock.ObsidianSlab;
+import com.wwwday.boson.redstone.Nand;
 import com.wwwday.boson.trees.PoplarTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -65,6 +66,9 @@ public class ModBlocks {
             () -> new SaplingBlock(new PoplarTree(), AbstractBlock.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> LIGHTNING_CHANNELER = BLOCKS.register("lightning_channeler",
             () -> new LightningChannelerBlock(AbstractBlock.Properties.of(Material.METAL)));
+
+    public static final RegistryObject<Block> NAND = BLOCKS.register("nand",
+            () -> new Nand(AbstractBlock.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

@@ -96,6 +96,10 @@ public class ModItems {
     public static final RegistryObject<Item> LIGHTNING_CHANNELER = ITEMS.register("lightning_channeler",
             () -> new BlockItem(ModBlocks.LIGHTNING_CHANNELER.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
+    public static final RegistryObject<Item> Nand = ITEMS.register("nand",
+            () -> new BlockItem(ModBlocks.NAND.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

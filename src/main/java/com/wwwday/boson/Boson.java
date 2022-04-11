@@ -50,6 +50,8 @@ public class Boson {
             RenderTypeLookup.setRenderLayer(ModBlocks.SOYBEAN_BLOCK.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.POPLAR_LEAVES.get(), RenderType.cutout());
             RenderTypeLookup.setRenderLayer(ModBlocks.POPLAR_SAPLING.get(), RenderType.cutout());
+            RenderTypeLookup.setRenderLayer(ModBlocks.NAND.get(), RenderType.cutout());
+
             ScreenManager.register(ModContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
                     LightningChannelerScreen::new);
         });
