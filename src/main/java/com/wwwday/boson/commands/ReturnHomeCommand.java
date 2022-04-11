@@ -6,15 +6,12 @@ import com.wwwday.boson.Boson;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
 
 public class ReturnHomeCommand {
     public ReturnHomeCommand(CommandDispatcher<CommandSource> dispatcher) {
         dispatcher.register(Commands.literal("home")
-                .then(Commands.literal("return").executes((command) -> {
-                    return returnHome(command.getSource());
-                })));
+                .then(Commands.literal("return").executes((command) -> returnHome(command.getSource()))));
     }
 
     private int returnHome(CommandSource source) throws CommandSyntaxException {

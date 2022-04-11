@@ -9,10 +9,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTileEntities {
-    public static DeferredRegister<TileEntityType<?>> TILE_ENTITIES =
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES =
             DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Boson.MOD_ID);
 
-    public static RegistryObject<TileEntityType<LightningChannelerTile>> LIGHTNING_CHANNELER_TILE =
+    public static final RegistryObject<TileEntityType<LightningChannelerTile>> LIGHTNING_CHANNELER_TILE =
             TILE_ENTITIES.register("lightning_channeler_tile", () -> TileEntityType.Builder.of(
                     LightningChannelerTile::new, ModBlocks.LIGHTNING_CHANNELER.get()).build(null));
 

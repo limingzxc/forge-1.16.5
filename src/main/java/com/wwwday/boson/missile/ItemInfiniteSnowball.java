@@ -4,7 +4,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SnowballItem;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.entity.projectile.SnowballEntity;

@@ -38,7 +38,7 @@ public enum OreType {
 
     public static OreType get(Block block) {
         for(OreType ore: values()) {
-            if(block == ore.block) {
+            if(block == ore.block.get()) {
                 return ore;
             }
         }

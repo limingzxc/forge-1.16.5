@@ -25,18 +25,18 @@ public class BosonTags {
 
     }
 
-//    public static class Items {
-//
-//        public static final Tags.IOptionalNamedTag<Item> SOYBEAN = createForgeTag("seeds/soybean");
-//
-//        private static Tags.IOptionalNamedTag<Item> createTag(String name) {
-//            return ItemTags.createOptional(new ResourceLocation(Boson.MOD_ID, name));
-//        }
-//
-//        private static Tags.IOptionalNamedTag<Item> createForgeTag(String name) {
-//            return ItemTags.createOptional(new ResourceLocation("forge", name));
-//        }
-//
-//    }
-//
+    public static class Items {
+
+        public static final Tags.IOptionalNamedTag<Item> SOYBEAN = createForgeTag("seeds/soybean");
+
+        private static Tags.IOptionalNamedTag<Item> createTag(String name) {
+            return ItemTags.createOptional(new ResourceLocation(Boson.MOD_ID, name));
+        }
+
+        private static Tags.IOptionalNamedTag<Item> createForgeTag(String name) {
+            return ItemTags.createOptional(new ResourceLocation("forge", name));
+        }
+
+    }
+
 }

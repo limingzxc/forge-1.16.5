@@ -32,7 +32,7 @@ public class ModOreGeneration {
     }
 
     private static ConfiguredFeature<?, ?> registryOreFeature(OreType ore, OreFeatureConfig oreFeatureConfig,
-                                                              ConfiguredPlacement configuredPlacement) {
+                                                              ConfiguredPlacement<?> configuredPlacement) {
         return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, Objects.requireNonNull(ore.getBlock().get().getRegistryName()),
                 Feature.ORE.configured(oreFeatureConfig).decorated(configuredPlacement)
                         .squared().count(ore.getMaxVeinSize()));

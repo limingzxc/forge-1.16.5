@@ -9,9 +9,8 @@ import net.minecraft.item.crafting.Ingredient;
 import javax.annotation.Nonnull;
 
 public enum ModItemTier implements IItemTier {
-    OBSIDIAN(3, 2000, 10.0F, 4.0F, 30, () -> {
-        return Ingredient.of(ModItems.OBSIDIAN_INGOT.get());
-    });
+    OBSIDIAN(3, 2000, 10.0F, 4.0F, 30,
+            () -> Ingredient.of(ModItems.OBSIDIAN_INGOT.get()));
 
     private final int harvestLevel;
     private final int maxUses;

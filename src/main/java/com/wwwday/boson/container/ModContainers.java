@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 
 public class ModContainers {
-    public static DeferredRegister<ContainerType<?>> CONTAINERS
+    public static final DeferredRegister<ContainerType<?>> CONTAINERS
             = DeferredRegister.create(ForgeRegistries.CONTAINERS, Boson.MOD_ID);
 
     public static final RegistryObject<ContainerType<LightningChannelerContainer>> LIGHTNING_CHANNELER_CONTAINER
