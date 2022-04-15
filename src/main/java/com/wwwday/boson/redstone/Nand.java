@@ -1,7 +1,6 @@
 package com.wwwday.boson.redstone;
 
 import com.wwwday.boson.ModBlockStateProperties;
-import com.wwwday.boson.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -10,7 +9,6 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -34,11 +32,21 @@ public class Nand extends RedstoneDiodeBlock {
         return 2;
     }
 
-    public boolean[] getSignalBoth(IWorldReader reader, BlockPos pos, BlockState state) {
+    public boolean[] getSignalBoth(World world, BlockPos pos, BlockState state) {
         Direction direction = state.getValue(FACING);
         Direction direction1 = direction.getClockWise();
         Direction direction2 = direction.getCounterClockWise();
-        return new boolean[]{getAlternateSignalAt(reader, pos.relative(direction1), direction1) > 0, getAlternateSignalAt(reader, pos.relative(direction2), direction2) > 0};
+        return new boolean[]{getInputSignal(world, pos.relative(direction1), direction1) > 0, getInputSignal(world, pos.relative(direction2), direction2) > 0};
+    }
+
+    protected int getInputSignal(World world, BlockPos pos, Direction direction) {
+        int i = world.getSignal(pos, direction);
+        if (i >= 15) {
+            return i;
+        } else {
+            BlockState blockstate = world.getBlockState(pos);
+            return Math.max(i, blockstate.is(Blocks.REDSTONE_WIRE) ? blockstate.getValue(RedstoneWireBlock.POWER) : 0);
+        }
     }
 
     @Override
@@ -101,11 +109,6 @@ public class Nand extends RedstoneDiodeBlock {
     @Override
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
         p_206840_1_.add(FACING, POWERED, LEFT, RIGHT);
-    }
-
-    @Override
-    public boolean getWeakChanges(BlockState state, net.minecraft.world.IWorldReader world, BlockPos pos) {
-        return state.is(ModBlocks.NAND.get());
     }
 
     @Override
