@@ -2,9 +2,9 @@ package com.wwwday.boson.redstone;
 
 import com.wwwday.boson.ModBlockStateProperties;
 import com.wwwday.boson.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.RedstoneDiodeBlock;
+import net.minecraft.block.*;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -34,7 +34,7 @@ public class Nand extends RedstoneDiodeBlock {
         return 2;
     }
 
-    public boolean[] getSignal(IWorldReader p_176407_1_, BlockPos p_176407_2_, BlockState p_176407_3_) {
+    public boolean[] getSignalBoth(IWorldReader p_176407_1_, BlockPos p_176407_2_, BlockState p_176407_3_) {
         Direction direction = p_176407_3_.getValue(FACING);
         Direction direction1 = direction.getClockWise();
         Direction direction2 = direction.getCounterClockWise();
@@ -43,12 +43,19 @@ public class Nand extends RedstoneDiodeBlock {
 
     @Override
     protected boolean shouldTurnOn(World world, BlockPos pos, BlockState state) {
-        boolean[] i = getSignal(world, pos, state);
-        return !(i[0] && i[1]);
+        boolean[] i = getSignalBoth(world, pos, state);
+
+        boolean flag = state.getValue(POWERED);
+        boolean flag1 = !(i[0] && i[1]);
+
+        boolean left = state.getValue(LEFT);
+        boolean right = state.getValue(RIGHT);
+
+        return flag != flag1 || i[0] != left || i[1] != right;
     }
 
     private void refreshOutputState(World world, BlockPos pos, BlockState state) {
-        boolean[] i = getSignal(world, pos, state);
+        boolean[] i = getSignalBoth(world, pos, state);
 
         boolean left = state.getValue(LEFT);
         boolean right = state.getValue(RIGHT);
@@ -64,25 +71,26 @@ public class Nand extends RedstoneDiodeBlock {
 
     @Override
     protected void checkTickOnNeighbor(World world, BlockPos pos, BlockState state) {
-        if (!this.isLocked(world, pos, state)) {
-            boolean flag = state.getValue(POWERED);
-            boolean flag1 = this.shouldTurnOn(world, pos, state);
-            boolean[] i = getSignal(world, pos, state);
-            boolean left = state.getValue(LEFT);
-            boolean right = state.getValue(RIGHT);
-
-            if ((flag != flag1 || i[0] != left || i[1] != right) && !world.getBlockTicks().willTickThisTick(pos, this)) {
-                TickPriority tickpriority = TickPriority.HIGH;
-                if (this.shouldPrioritize(world, pos, state)) {
-                    tickpriority = TickPriority.EXTREMELY_HIGH;
-                } else if (flag) {
-                    tickpriority = TickPriority.VERY_HIGH;
-                }
-
-                world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
+        if (shouldTurnOn(world, pos, state) && !world.getBlockTicks().willTickThisTick(pos, this)) {
+            TickPriority tickpriority = TickPriority.HIGH;
+            if (this.shouldPrioritize(world, pos, state)) {
+                tickpriority = TickPriority.EXTREMELY_HIGH;
+            } else if (state.getValue(POWERED)) {
+                tickpriority = TickPriority.VERY_HIGH;
             }
 
+            world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
         }
+
+    }
+
+    @Override
+    public void setPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
+        boolean[] i = getSignalBoth(world, pos, state);
+        if (i[0] || i[1]) {
+            world.getBlockTicks().scheduleTick(pos, this, 1);
+        }
+
     }
 
     @Override
@@ -102,7 +110,7 @@ public class Nand extends RedstoneDiodeBlock {
 
     @Override
     public void onNeighborChange(BlockState state, net.minecraft.world.IWorldReader world, BlockPos pos, BlockPos neighbor) {
-        if (pos.getY() == neighbor.getY() && world instanceof World && !((World)world).isClientSide()) {
+        if (pos.getY() == neighbor.getY() && world instanceof World && !world.isClientSide()) {
             state.neighborChanged((World)world, pos, world.getBlockState(neighbor).getBlock(), neighbor, false);
         }
     }
