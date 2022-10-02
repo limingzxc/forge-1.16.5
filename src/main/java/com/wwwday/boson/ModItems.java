@@ -8,6 +8,7 @@ import com.wwwday.boson.item.Firestone;
 import com.wwwday.boson.item.ObsidianIngot;
 import com.wwwday.boson.melee_weapons.ObsidianSword;
 import com.wwwday.boson.missile.ItemInfiniteSnowball;
+import com.wwwday.boson.missile.ProjectileArrow;
 import com.wwwday.boson.tool.ObsidianPickaxe;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -30,7 +31,8 @@ public class ModItems {
     public static RegistryObject<Item> OBSIDIAN_FRAME = ITEMS.register("obsidian_frame",
             () -> new BlockItem(ModBlocks.OBSIDIAN_FRAME.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
-    public static final RegistryObject<Item> ITEM_INFINITE_SNOWBALL = ITEMS.register("item_infinite_snowball", ItemInfiniteSnowball::new);
+    public static final RegistryObject<Item> ITEM_INFINITE_SNOWBALL = ITEMS.register("item_infinite_snowball",
+            ItemInfiniteSnowball::new);
 
     public static RegistryObject<Item> OBSIDIAN_SWORD = ITEMS.register("obsidian_sword", ObsidianSword::new);
 
@@ -38,7 +40,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> OBSIDIAN_APPLE = ITEMS.register("obsidian_apple", ObsidianApple::new);
     public static final RegistryObject<Item> CLOUD_FRUIT = ITEMS.register("cloud_fruit", CloudFruit::new);
-//
+
     public static final RegistryObject<Item> OBSIDIAN_BLOCK = ITEMS.register("obsidian_block",
             () -> new BlockItem(ModBlocks.OBSIDIAN_BLOCK.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
@@ -96,8 +98,11 @@ public class ModItems {
     public static final RegistryObject<Item> LIGHTNING_CHANNELER = ITEMS.register("lightning_channeler",
             () -> new BlockItem(ModBlocks.LIGHTNING_CHANNELER.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
-    public static final RegistryObject<Item> Nand = ITEMS.register("nand",
+    public static final RegistryObject<Item> NAND = ITEMS.register("nand",
             () -> new BlockItem(ModBlocks.NAND.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> PROJECTILE_ARROW = ITEMS.register("projectile_arrow",
+            ProjectileArrow::new);
 
 
     public static void register(IEventBus eventBus) {

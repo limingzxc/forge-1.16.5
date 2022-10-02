@@ -16,5 +16,6 @@
   "tooltip.boson.firestone_shift": "Might set you one fire. But also might protect from it!",
   "tooltip.boson.cloud_fruit": "Hold \u00A7eSHIFT\u00A7r for moreInformation",
   "tooltip.boson.cloud_fruit_shift": "",
-  "screen.boson.lightning_channeler": "lightning_channeler"
+  "screen.boson.lightning_channeler": "lightning_channeler",
+  "item.boson.projectile_arrow": "projectile_arrow"
 }

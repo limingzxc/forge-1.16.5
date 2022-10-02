@@ -1,9 +1,8 @@
 package com.wwwday.boson.missile;
 
+import com.wwwday.boson.util.BosonTags;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.entity.projectile.SnowballEntity;
@@ -23,6 +22,7 @@ public class ItemInfiniteSnowball extends Item {
         world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
         if (!world.isClientSide) {
             SnowballEntity snowball = new SnowballEntity(world, player);
+            snowball.setItem(item);
             snowball.shootFromRotation(player, player.xRot, player.yRot, 0.0F, 1.5F, 1.0F);
             world.addFreshEntity(snowball);
         }
