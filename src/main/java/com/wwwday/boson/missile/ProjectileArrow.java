@@ -31,7 +31,7 @@ public class ProjectileArrow extends Item {
 
         pPlayer.awardStat(Stats.ITEM_USED.get(this));
         if (!pPlayer.abilities.instabuild) {
-            itemstack.shrink(2);
+            itemstack.shrink(1);
         }
 
         return ActionResult.sidedSuccess(itemstack, pLevel.isClientSide());

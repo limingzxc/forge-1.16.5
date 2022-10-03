@@ -12,6 +12,8 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class SoybeanBlock extends CropsBlock {
     public SoybeanBlock(Properties builder) {
         super(builder);

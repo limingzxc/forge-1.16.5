@@ -13,6 +13,8 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class FirestoneBlock extends Block {
 
     public FirestoneBlock(Properties properties) {

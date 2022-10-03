@@ -17,6 +17,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 public class CloudFruit extends Item {
     private static final Food food = (new Food.Builder())
             .saturationMod(1)

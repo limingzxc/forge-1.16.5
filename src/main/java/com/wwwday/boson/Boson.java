@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.wwwday.boson.container.ModContainers;
 import com.wwwday.boson.screen.LightningChannelerScreen;
 import com.wwwday.boson.tileentity.ModTileEntities;
+import com.wwwday.boson.world.structures.ModStructures;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
@@ -30,6 +31,8 @@ public class Boson {
         ModTileEntities.register(eventBus);
         ModContainers.register(eventBus);
 
+        ModStructures.register(eventBus);
+
         eventBus.addListener(this::doClientStuff);
 
         eventBus.addListener(this::setup);
@@ -42,6 +45,7 @@ public class Boson {
             AxeItem.STRIPABLES = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPABLES)
                     .put(ModBlocks.POPLAR_LOG.get(), ModBlocks.STRIPPED_POPLAR_LOG.get())
                     .put(ModBlocks.POPLAR_WOOD.get(), ModBlocks.STRIPPED_POPLAR_WOOD.get()).build();
+            ModStructures.setupStructures();
         });
     }
 

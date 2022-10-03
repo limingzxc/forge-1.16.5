@@ -10,6 +10,8 @@ import net.minecraft.entity.projectile.SnowballEntity;
 import javax.annotation.Nonnull;
 
 
+import net.minecraft.item.Item.Properties;
+
 public class ItemInfiniteSnowball extends Item {
     public ItemInfiniteSnowball() {
         super(new Properties().tab(ItemGroup.TAB_MISC));

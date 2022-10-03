@@ -26,6 +26,8 @@ import net.minecraft.world.IWorld;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ObsidianSlab extends SlabBlock {
 
     public static final EnumProperty<SlabType> TYPE = BlockStateProperties.SLAB_TYPE;
