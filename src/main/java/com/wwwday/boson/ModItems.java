@@ -104,6 +104,8 @@ public class ModItems {
     public static final RegistryObject<Item> PROJECTILE_ARROW = ITEMS.register("projectile_arrow",
             ProjectileArrow::new);
 
+    public static final RegistryObject<Item> OBSIDIAN_TRASH = ITEMS.register("obsidian_trash",
+            () -> new BlockItem(ModBlocks.OBSIDIAN_TRASH.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -27,8 +27,6 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class LightningChannelerBlock extends Block {
 
     public LightningChannelerBlock(Properties properties) {

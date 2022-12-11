@@ -1,9 +1,6 @@
 package com.wwwday.boson;
 
-import com.wwwday.boson.block.CubeBlock;
-import com.wwwday.boson.block.FirestoneBlock;
-import com.wwwday.boson.block.LightningChannelerBlock;
-import com.wwwday.boson.block.ObsidianBlock;
+import com.wwwday.boson.block.*;
 import com.wwwday.boson.crop.SoybeanBlock;
 import com.wwwday.boson.group.ModGroup;
 import com.wwwday.boson.notsoildblock.ObsidianFrame;
@@ -14,6 +11,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.obj.MaterialLibrary;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -69,6 +67,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> NAND = BLOCKS.register("nand",
             () -> new Nand(AbstractBlock.Properties.of(Material.DECORATION).instabreak().sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> OBSIDIAN_TRASH = BLOCKS.register("obsidian_trash",
+            () -> new ObsidianTrashBlock(AbstractBlock.Properties.of(Material.METAL)));
+
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

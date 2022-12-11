@@ -23,6 +23,7 @@ public class ModContainers {
                 return new LightningChannelerContainer(windowId, world, pos, inv, inv.player);
             })));
 
+
     public static void register(IEventBus eventBus) {
         CONTAINERS.register(eventBus);
     }

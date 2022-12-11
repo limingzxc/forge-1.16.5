@@ -16,6 +16,10 @@ public class ModTileEntities {
             TILE_ENTITIES.register("lightning_channeler_tile", () -> TileEntityType.Builder.of(
                     LightningChannelerTile::new, ModBlocks.LIGHTNING_CHANNELER.get()).build(null));
 
+    public static final RegistryObject<TileEntityType<ObsidianTrashTileEntity>> OBSIDIAN_TRASH_TILE =
+            TILE_ENTITIES.register("obsidian_trash_tile", () -> TileEntityType.Builder.of(
+                    ObsidianTrashTileEntity::new, ModBlocks.OBSIDIAN_TRASH.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         TILE_ENTITIES.register(eventBus);
     }
