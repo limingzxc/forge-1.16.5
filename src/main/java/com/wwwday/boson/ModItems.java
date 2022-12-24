@@ -4,6 +4,7 @@ import com.wwwday.boson.armor.ModArmorMaterial;
 import com.wwwday.boson.food.CloudFruit;
 import com.wwwday.boson.food.ObsidianApple;
 import com.wwwday.boson.group.ModGroup;
+import com.wwwday.boson.item.Backpack;
 import com.wwwday.boson.item.Firestone;
 import com.wwwday.boson.item.ObsidianIngot;
 import com.wwwday.boson.melee_weapons.ObsidianSword;
@@ -106,6 +107,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> OBSIDIAN_TRASH = ITEMS.register("obsidian_trash",
             () -> new BlockItem(ModBlocks.OBSIDIAN_TRASH.get(), new Item.Properties().tab(ModGroup.itemGroup)));
+
+    public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
+            Backpack::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

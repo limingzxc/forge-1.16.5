@@ -1,6 +1,7 @@
 package com.wwwday.boson.container;
 
 import com.wwwday.boson.Boson;
+import com.wwwday.boson.inventory.BackpackInventory;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -23,6 +24,12 @@ public class ModContainers {
                 return new LightningChannelerContainer(windowId, world, pos, inv, inv.player);
             })));
 
+    public static final RegistryObject<ContainerType<BackpackContainer>> BACKPACK_CONTAINER
+            = CONTAINERS.register("backpack_container",
+            () -> IForgeContainerType.create(((windowId, inv, data) -> {
+                BackpackInventory inventory = new BackpackInventory(inv.getSelected(), inv.player);
+                return new BackpackContainer(windowId, inv, inventory.getItemStackHandler(), 6);
+            })));
 
     public static void register(IEventBus eventBus) {
         CONTAINERS.register(eventBus);

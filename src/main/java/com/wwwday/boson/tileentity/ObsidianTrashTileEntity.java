@@ -32,5 +32,4 @@ public class ObsidianTrashTileEntity extends TileEntity {
         }
         return super.getCapability(cap, side);
     }
-
 }

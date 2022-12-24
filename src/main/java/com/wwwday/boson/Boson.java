@@ -2,6 +2,7 @@ package com.wwwday.boson;
 
 import com.google.common.collect.ImmutableMap;
 import com.wwwday.boson.container.ModContainers;
+import com.wwwday.boson.screen.BackpackScreen;
 import com.wwwday.boson.screen.LightningChannelerScreen;
 import com.wwwday.boson.tileentity.ModTileEntities;
 import com.wwwday.boson.world.structures.ModStructures;
@@ -58,6 +59,9 @@ public class Boson {
 
             ScreenManager.register(ModContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
                     LightningChannelerScreen::new);
+
+            ScreenManager.register(ModContainers.BACKPACK_CONTAINER.get(),
+                    BackpackScreen::new);
         });
     }
 }

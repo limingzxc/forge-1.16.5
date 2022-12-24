@@ -87,4 +87,5 @@ public class LightningChannelerBlock extends Block {
     public boolean hasTileEntity(BlockState state) {
         return true;
     }
+
 }
