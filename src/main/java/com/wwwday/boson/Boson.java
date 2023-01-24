@@ -60,7 +60,10 @@ public class Boson {
             ScreenManager.register(ModContainers.LIGHTNING_CHANNELER_CONTAINER.get(),
                     LightningChannelerScreen::new);
 
-            ScreenManager.register(ModContainers.BACKPACK_CONTAINER.get(),
+            ScreenManager.register(ModContainers.BIG_BACKPACK_CONTAINER.get(),
+                    BackpackScreen::new);
+
+            ScreenManager.register(ModContainers.SMALL_BACKPACK_CONTAINER.get(),
                     BackpackScreen::new);
         });
     }

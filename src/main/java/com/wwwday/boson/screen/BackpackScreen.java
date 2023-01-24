@@ -2,8 +2,8 @@ package com.wwwday.boson.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.wwwday.boson.ModItems;
 import com.wwwday.boson.container.BackpackContainer;
+import net.minecraft.client.gui.IHasContainer;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ClickType;
@@ -11,19 +11,19 @@ import net.minecraft.inventory.container.Slot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-public class BackpackScreen extends ContainerScreen<BackpackContainer> {
+public class BackpackScreen extends ContainerScreen<BackpackContainer> implements IHasContainer<BackpackContainer> {
 
     private static final ResourceLocation GUI = new ResourceLocation("textures/gui/container/generic_54.png");
-
-    private final BackpackContainer pMenu;
     private final int pId;
+    private final boolean isMainHand;
+    private final int containerRows;
 
     public BackpackScreen(BackpackContainer pMenu, PlayerInventory pPlayerInventory, ITextComponent pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
-        this.pMenu = pMenu;
         this.pId = pPlayerInventory.selected;
-        this.passEvents = false;
-        this.imageHeight = 114 + 6 * 18;
+        this.isMainHand = pMenu.getIsMainHand();
+        this.containerRows = pMenu.getRowCount();
+        this.imageHeight = 114 + this.containerRows * 18;
         this.inventoryLabelY = this.imageHeight - 94;
     }
 
@@ -40,27 +40,19 @@ public class BackpackScreen extends ContainerScreen<BackpackContainer> {
         this.minecraft.getTextureManager().bind(GUI);
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        int containerRows = 6;
-        this.blit(pMatrixStack, i, j, 0, 0, this.imageWidth, containerRows * 18 + 17);
-        this.blit(pMatrixStack, i, j + containerRows * 18 + 17, 0, 126, this.imageWidth, 96);
+        this.blit(pMatrixStack, i, j, 0, 0, this.imageWidth, this.containerRows * 18 + 17);
+        this.blit(pMatrixStack, i, j + this.containerRows * 18 + 17, 0, 126, this.imageWidth, 96);
     }
 
     @Override
     protected void slotClicked(Slot pSlot, int pSlotId, int pMouseButton, ClickType pType) {
-        if(pSlot != null && pSlot.getSlotIndex() == pId && pSlot.container == inventory && pType != ClickType.CLONE)
+        if(isMainHand && pSlot != null && pSlot.getSlotIndex() == pId
+                && pSlot.container == inventory && pType != ClickType.CLONE)
         {
             return;
         }
         super.slotClicked(pSlot, pSlotId, pMouseButton, pType);
     }
 
-    @Override
-    public void tick() {
-        if(inventory.getSelected().getItem() != ModItems.BACKPACK.get())
-        {
-            pMenu.removed(inventory.player);
-            inventory.player.closeContainer();
-        }
-        super.tick();
-    }
+
 }

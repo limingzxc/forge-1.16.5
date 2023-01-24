@@ -10,5 +10,8 @@
   "item.boson.obsidian_leggings": "黑曜石褲子",
   "item.boson.obsidian_boots": "黑曜石鞋子",
   "item.boson.cloud_fruit": "雲之果",
-  "item.boson.item_infinite_snowball": "無限雪球"
+  "item.boson.item_infinite_snowball": "無限雪球",
+  "item.boson.big_backpack": "大背包",
+  "item.boson.small_backpack": "小背包",
+  "screen.boson.backpack": "背包"
 }

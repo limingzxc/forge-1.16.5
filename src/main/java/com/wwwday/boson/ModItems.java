@@ -108,8 +108,11 @@ public class ModItems {
     public static final RegistryObject<Item> OBSIDIAN_TRASH = ITEMS.register("obsidian_trash",
             () -> new BlockItem(ModBlocks.OBSIDIAN_TRASH.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 
-    public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
-            Backpack::new);
+    public static final RegistryObject<Item> BIG_BACKPACK = ITEMS.register("big_backpack",
+            () -> new Backpack(6));
+
+    public static final RegistryObject<Item> SMALL_BACKPACK = ITEMS.register("small_backpack",
+            () -> new Backpack(3));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

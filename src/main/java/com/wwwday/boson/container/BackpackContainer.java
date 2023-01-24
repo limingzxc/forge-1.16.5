@@ -3,18 +3,41 @@ package com.wwwday.boson.container;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
 public class BackpackContainer extends Container {
 
-    public BackpackContainer(int pContainerId, PlayerInventory pPlayerInventory, IItemHandler pContainer, int pRows) {
-        super(ModContainers.BACKPACK_CONTAINER.get(), pContainerId);
-        int i = (pRows - 4) * 18;
+    private final boolean isMainHand;
+
+    private final int containerRows;
+
+    public static BackpackContainer threeRows(int pContainerId, PlayerInventory pPlayerInventory,
+                                              ItemStackHandler pContainer, boolean isMainHand) {
+        return new BackpackContainer(ModContainers.SMALL_BACKPACK_CONTAINER.get(), pContainerId, pPlayerInventory,
+                pContainer, 3, isMainHand);
+    }
+
+    public static BackpackContainer sixRows(int pContainerId, PlayerInventory pPlayerInventory,
+                                            ItemStackHandler pContainer, boolean isMainHand) {
+        return new BackpackContainer(ModContainers.BIG_BACKPACK_CONTAINER.get(), pContainerId, pPlayerInventory,
+                pContainer, 6, isMainHand);
+    }
+
+    public BackpackContainer(ContainerType<BackpackContainer> pType, int pContainerId, PlayerInventory pPlayerInventory,
+                             ItemStackHandler pContainer, int pRows, boolean isMainHand) {
+        super(pType, pContainerId);
+        this.containerRows = pRows;
+        this.isMainHand = isMainHand;
+        this.TE_INVENTORY_SLOT_COUNT = this.containerRows * 9;
+        int i = (this.containerRows - 4) * 18;
 
 
         for(int l = 0; l < 3; ++l) {
@@ -27,12 +50,21 @@ public class BackpackContainer extends Container {
             this.addSlot(new Slot(pPlayerInventory, i1, 8 + i1 * 18, 161 + i));
         }
 
-        for(int j = 0; j < pRows; ++j) {
+        for(int j = 0; j < this.containerRows; ++j) {
             for(int k = 0; k < 9; ++k) {
                 this.addSlot(new SlotItemHandler(pContainer, k + j * 9, 8 + k * 18, 18 + j * 18));
             }
         }
 
+    }
+
+    public boolean getIsMainHand() {
+        return this.isMainHand;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getRowCount() {
+        return this.containerRows;
     }
 
     /**
@@ -59,7 +91,7 @@ public class BackpackContainer extends Container {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 54;  // must match TileEntityInventoryBasic.NUMBER_OF_SLOTS
+    private final int TE_INVENTORY_SLOT_COUNT;  // must match TileEntityInventoryBasic.NUMBER_OF_SLOTS
 
     @Nonnull
     @Override

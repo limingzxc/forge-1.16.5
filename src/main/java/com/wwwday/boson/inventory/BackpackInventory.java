@@ -2,6 +2,7 @@ package com.wwwday.boson.inventory;
 
 import com.wwwday.boson.ModItems;
 import com.wwwday.boson.container.BackpackContainer;
+import com.wwwday.boson.item.Backpack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -18,21 +19,22 @@ import javax.annotation.Nonnull;
 
 public class BackpackInventory implements INamedContainerProvider {
 
-    private final ItemStackHandler itemStackHandler = createHandler();
+    private final int rows;
+    private final ItemStackHandler itemStackHandler;
     private final ItemStack itemStack;
-
     private final PlayerEntity playerEntity;
 
-    public BackpackInventory(ItemStack stack, PlayerEntity player) {
+    public BackpackInventory(ItemStack stack, PlayerEntity player, int pRows) {
+        rows = pRows;
         playerEntity = player;
         itemStack = stack;
-
+        itemStackHandler = createHandler();
 
         this.loadItems(stack.getOrCreateTag());
     }
 
-    public static void openGUI(ServerPlayerEntity player, ItemStack stack) {
-        NetworkHooks.openGui(player, new BackpackInventory(stack, player));
+    public static void openGUI(ServerPlayerEntity player, ItemStack stack, int pRows) {
+        NetworkHooks.openGui(player, new BackpackInventory(stack, player, pRows));
     }
 
     @Nonnull
@@ -43,12 +45,19 @@ public class BackpackInventory implements INamedContainerProvider {
 
     @Override
     public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-        return new BackpackContainer(i, playerInventory,
-                itemStackHandler, 6);
+        if(rows == 3){
+            return BackpackContainer.threeRows(i, playerInventory,
+                    itemStackHandler, playerEntity.getMainHandItem().getItem() == ModItems.SMALL_BACKPACK.get());
+        }
+        else {
+            return BackpackContainer.sixRows(i, playerInventory,
+                    itemStackHandler, playerEntity.getMainHandItem().getItem() == ModItems.BIG_BACKPACK.get());
+        }
+
     }
 
     public ItemStackHandler createHandler() {
-        return new ItemStackHandler(54) {
+        return new ItemStackHandler(rows * 9) {
             @Override
             protected void onContentsChanged(int slot)
             {
@@ -58,7 +67,7 @@ public class BackpackInventory implements INamedContainerProvider {
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack)
             {
-                return stack.getItem() != ModItems.BACKPACK.get();
+                return !(stack.getItem() instanceof Backpack);
             }
 
         };
