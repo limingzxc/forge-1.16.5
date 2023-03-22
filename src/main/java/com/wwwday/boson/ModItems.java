@@ -7,6 +7,7 @@ import com.wwwday.boson.group.ModGroup;
 import com.wwwday.boson.item.Backpack;
 import com.wwwday.boson.item.Firestone;
 import com.wwwday.boson.item.ObsidianIngot;
+import com.wwwday.boson.item.TestCapability;
 import com.wwwday.boson.melee_weapons.ObsidianSword;
 import com.wwwday.boson.missile.ItemInfiniteSnowball;
 import com.wwwday.boson.missile.ProjectileArrow;
@@ -22,6 +23,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.lwjgl.system.CallbackI;
 
 
 public class ModItems {
@@ -113,6 +115,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> SMALL_BACKPACK = ITEMS.register("small_backpack",
             () -> new Backpack(3));
+
+    public static final RegistryObject<Item> TEST_CAPABILITY = ITEMS.register("test_capability",
+            TestCapability::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

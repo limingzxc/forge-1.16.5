@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.wwwday.boson.container.ModContainers;
 import com.wwwday.boson.screen.BackpackScreen;
 import com.wwwday.boson.screen.LightningChannelerScreen;
+import com.wwwday.boson.screen.TestScreen;
 import com.wwwday.boson.tileentity.ModTileEntities;
 import com.wwwday.boson.world.structures.ModStructures;
 import net.minecraft.block.Block;
@@ -65,6 +66,9 @@ public class Boson {
 
             ScreenManager.register(ModContainers.SMALL_BACKPACK_CONTAINER.get(),
                     BackpackScreen::new);
+
+            ScreenManager.register(ModContainers.TEST_CONTAINER.get(),
+                    TestScreen::new);
         });
     }
 }

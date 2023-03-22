@@ -49,6 +49,11 @@ public class ModContainers {
                 return BackpackContainer.threeRows(windowId, inv, inventory.getItemStackHandler(), isMainHand);
             })));
 
+    public static final RegistryObject<ContainerType<TestContainer>> TEST_CONTAINER
+            = CONTAINERS.register("test_container", () -> IForgeContainerType.create(
+                    (((windowId, inv, data) -> new TestContainer(ModContainers.TEST_CONTAINER.get(), windowId,
+                            inv, inv.getSelected())))));
+
     public static void register(IEventBus eventBus) {
         CONTAINERS.register(eventBus);
     }

@@ -35,9 +35,9 @@ description='''
 入门练习Mod.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.examplemod]] #optional
+[[dependencies.boson]] #optional
     # the modid of the dependency
-    modId="forge" #mandatory
+    modId="boson" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
@@ -47,8 +47,8 @@ description='''
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.examplemod]]
-    modId="minecraft"
+[[dependencies.boson]]
+    modId="boson"
     mandatory=true
     versionRange="[1.16.3]"
     ordering="NONE"
