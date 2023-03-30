@@ -6,18 +6,22 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
 public class TestContainer extends Container {
+    private final ItemStack stack;
+    private final ItemStackHandler itemStackHandler;
+
     public TestContainer(ContainerType<TestContainer> pType, int pContainerId, PlayerInventory pPlayerInventory,
                          ItemStack stack) {
         super(pType, pContainerId);
-        IItemHandler pContainer = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        this.stack = stack;
+        this.itemStackHandler = (ItemStackHandler) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
                 .orElse(new ItemStackHandler(1));
         int i = (6 - 4) * 18;
 
@@ -34,7 +38,7 @@ public class TestContainer extends Container {
 
         for(int j = 0; j < 6; ++j) {
             for(int k = 0; k < 9; ++k) {
-                this.addSlot(new SlotItemHandler(pContainer, k + j * 9, 8 + k * 18, 18 + j * 18));
+                this.addSlot(new SlotItemHandler(itemStackHandler, k + j * 9, 8 + k * 18, 18 + j * 18));
             }
         }
 
@@ -97,4 +101,10 @@ public class TestContainer extends Container {
         return copyOfSourceStack;
     }
 
+    @Override
+    public void removed(PlayerEntity pPlayer) {
+        super.removed(pPlayer);
+        CompoundNBT itemStackTag = stack.getOrCreateTag();
+        itemStackTag.put("ItemStackHandler", itemStackHandler.serializeNBT());
+    }
 }

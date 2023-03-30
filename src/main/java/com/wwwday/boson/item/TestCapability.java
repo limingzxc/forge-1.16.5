@@ -33,8 +33,9 @@ public class TestCapability extends Item {
         super(new Properties().tab(ModGroup.itemGroup));
     }
 
+    @Nonnull
     @Override
-    public ActionResult<ItemStack> use(World pLevel, PlayerEntity pPlayer, Hand pHand) {
+    public ActionResult<ItemStack> use(World pLevel, PlayerEntity pPlayer, @Nonnull Hand pHand) {
         ItemStack itemStack = pPlayer.getItemInHand(pHand);
 
         if(!pLevel.isClientSide()) {
@@ -50,18 +51,20 @@ public class TestCapability extends Item {
     @Nullable
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
-        return new ICapabilityProvider()
-        {
+
+        return new ICapabilityProvider() {
             @Nonnull
             @Override
             public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
                 if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-                    return LazyOptional.of(() -> new ItemStackHandler(54) {
-                        @Override
-                        public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                            return !(stack.getItem() instanceof TestCapability);
-                        }
-                    }).cast();
+                    CompoundNBT itemStackTag = stack.getOrCreateTag(); // 获取或创建 itemStack 的 nbt
+                    if (!itemStackTag.contains("ItemStackHandler")) { // 检查是否已存在存储的 nbt
+                        ItemStackHandler itemStackHandler = new ItemStackHandler(54);
+                        itemStackTag.put("ItemStackHandler", itemStackHandler.serializeNBT()); // 存储 ItemStackHandler 的 nbt
+                    }
+                    ItemStackHandler itemStackHandler = new ItemStackHandler(54);
+                    itemStackHandler.deserializeNBT(itemStackTag.getCompound("ItemStackHandler")); // 从 nbt 中获取存储的 ItemStackHandler
+                    return LazyOptional.of(() -> itemStackHandler).cast();
                 }
                 return LazyOptional.empty();
             }
@@ -69,14 +72,15 @@ public class TestCapability extends Item {
     }
 
     INamedContainerProvider containerSupplier = new INamedContainerProvider() {
+        @Nonnull
         @Override
         public ITextComponent getDisplayName() {
             return new TranslationTextComponent("screen.boson.backpack");
         }
 
-        @Nullable
+        @Nonnull
         @Override
-        public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+        public Container createMenu(int i, @Nonnull PlayerInventory playerInventory, @Nonnull PlayerEntity playerEntity) {
             return new TestContainer(ModContainers.TEST_CONTAINER.get(), i, playerInventory,
                     playerInventory.getSelected());
         }
